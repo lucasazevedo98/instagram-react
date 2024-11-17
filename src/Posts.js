@@ -93,6 +93,18 @@ function Conteudo(props) {
         setLike("heart-sharp")
         setCor("red")
     }
+
+
+
+    function curtirviaBotao(){
+            if(like === "heart-outline"){
+                setLike("heart-sharp")
+                setCor("red")
+            } else {
+                setLike("heart-outline")
+                setCor("")
+            }
+    }
     return (
         <>
             <div class="conteudo">
@@ -102,7 +114,7 @@ function Conteudo(props) {
             <div class="fundo">
                 <div class="acoes">
                     <div>
-                        <ion-icon style={{color: cor}} name={like}></ion-icon>
+                        <ion-icon style={{color: cor}} name={like} onClick={curtirviaBotao}></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>

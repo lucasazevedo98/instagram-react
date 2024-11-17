@@ -11,7 +11,9 @@ export default function Posts() {
             post_nome: "gato-telefone",
 
             curtidas_foto: "assets/img/respondeai.svg",
-            curtidas_nome: "respondeai"
+            curtidas_nome: "respondeai",
+
+            numeroDeCurtidas:101523
         },
         {
             usuario_foto: "assets/img/barked.svg",
@@ -21,7 +23,8 @@ export default function Posts() {
             post_nome: "dog",
 
             curtidas_foto: "assets/img/adorable_animals.svg",
-            curtidas_nome: "adorable_animals"
+            curtidas_nome: "adorable_animals",
+            numeroDeCurtidas:99159
         },
         {
             usuario_foto: "assets/img/meowed.svg",
@@ -31,7 +34,9 @@ export default function Posts() {
             post_nome: "gato-telefone",
 
             curtidas_foto: "assets/img/respondeai.svg",
-            curtidas_nome: "respondeai"
+            curtidas_nome: "respondeai",
+
+            numeroDeCurtidas:101523
 
 
         }
@@ -48,6 +53,11 @@ export default function Posts() {
                     post_foto={post.post_foto}
                     post_nome={post.post_nome}
 
+                    curtidas_foto={post.curtidas_foto}
+                    curtidas_nome={post.curtidas_nome}
+
+                    numeroDeCurtidas={post.numeroDeCurtidas}
+
 
 
                 />
@@ -57,12 +67,12 @@ export default function Posts() {
     )
 }
 function Post(props) {
-    const { usuario_foto, usuario_nome, post_foto, post_nome } = props
+    const { usuario_foto, usuario_nome, post_foto, post_nome,curtidas_foto,curtidas_nome,numeroDeCurtidas } = props
     return (
         <div class="post">
             <Topo usuario_foto={usuario_foto} usuario_nome={usuario_nome} />
 
-            <Conteudo post_foto={post_foto} post_nome={post_nome} />
+            <Conteudo numeroDeCurtidas={numeroDeCurtidas} post_foto={post_foto} post_nome={post_nome} curtidas_foto={curtidas_foto} curtidas_nome={curtidas_nome} />
 
         </div>
     )
@@ -84,10 +94,12 @@ function Topo(props) {
 }
 
 function Conteudo(props) {
-    const { post_foto, post_nome } = props
+    const { post_foto, post_nome,curtidas_foto,curtidas_nome,numeroDeCurtidas } = props
 
     const [like,setLike] = useState('heart-outline')
     const [cor,setCor] = useState('')
+
+    const [curtidas,setCurtidas] = useState(numeroDeCurtidas)
 
     const [salvar, setSalvar] = useState('bookmark-outline')
 
@@ -95,15 +107,22 @@ function Conteudo(props) {
         if(like === "heart-outline"){
             setLike("heart-sharp")
             setCor("red")
+            setCurtidas(curtidas + 1)
         } else {
             setLike("heart-outline")
             setCor("")
+            setCurtidas(curtidas - 1)
         }
 }
 
     function curtir() {
-        setLike("heart-sharp")
-        setCor("red")
+
+        if(like==="heart-outline"){
+            setLike("heart-sharp")
+            setCor("red")
+            setCurtidas(curtidas + 1)
+        }
+
     }
 
     function botaoSalvar() {
@@ -132,9 +151,9 @@ function Conteudo(props) {
                 </div>
 
                 <div class="curtidas">
-                    <img src="assets/img/respondeai.svg" alt="respondeai" />
+                    <img src={curtidas_foto} alt={curtidas_nome} />
                     <div class="texto">
-                        Curtido por <strong>respondeai</strong> e <strong>outras 101.523 pessoas</strong>
+                        Curtido por <strong>{curtidas_nome}</strong> e <strong>outras {curtidas} pessoas</strong>
                     </div>
                 </div>
             </div>

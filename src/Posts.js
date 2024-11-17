@@ -89,22 +89,30 @@ function Conteudo(props) {
     const [like,setLike] = useState('heart-outline')
     const [cor,setCor] = useState('')
 
+    const [salvar, setSalvar] = useState('bookmark-outline')
+
+    function curtirviaBotao(){
+        if(like === "heart-outline"){
+            setLike("heart-sharp")
+            setCor("red")
+        } else {
+            setLike("heart-outline")
+            setCor("")
+        }
+}
+
     function curtir() {
         setLike("heart-sharp")
         setCor("red")
     }
 
-
-
-    function curtirviaBotao(){
-            if(like === "heart-outline"){
-                setLike("heart-sharp")
-                setCor("red")
-            } else {
-                setLike("heart-outline")
-                setCor("")
-            }
-    }
+    function botaoSalvar() {
+        if(salvar === "bookmark-outline"){
+            setSalvar("bookmark-sharp")
+        } else {
+            setSalvar("bookmark-outline")
+        }
+        }
     return (
         <>
             <div class="conteudo">
@@ -119,7 +127,7 @@ function Conteudo(props) {
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
                     <div>
-                        <ion-icon name="bookmark-outline"></ion-icon>
+                        <ion-icon onClick={botaoSalvar} name={salvar}></ion-icon>
                     </div>
                 </div>
 
@@ -132,5 +140,7 @@ function Conteudo(props) {
             </div>
         </>
     )
+
 }
+
 

@@ -9,14 +9,14 @@ export default function Suggestions() {
     ]
 
     return (
-        <div class="sugestoes">
-            <div class="titulo">
+        <div className="sugestoes">
+            <div className="titulo">
                 Sugestões para você
                 <div>Ver tudo</div>
             </div>
 
-            {usuarios.map((usuario)=>(
-                <Suggestion foto={usuario.foto} nome={usuario.nome} razao={usuario.razao}/>
+            {usuarios.map((usuario,i)=>(
+                <Suggestion key={i}foto={usuario.foto} nome={usuario.nome} razao={usuario.razao}/>
             ))}
 
 
@@ -30,16 +30,16 @@ function Suggestion(props) {
     const {foto,nome,razao} = props
 
     return (
-        <div class="sugestao">
-            <div class="usuario">
+        <div className="sugestao">
+            <div className="usuario">
                 <img src={foto} alt={nome} />
-                <div class="texto">
-                    <div class="nome">{nome}</div>
-                    <div class="razao">{razao}</div>
+                <div className="texto">
+                    <div className="nome">{nome}</div>
+                    <div className="razao">{razao}</div>
                 </div>
             </div>
 
-            <div class="seguir">Seguir</div>
+            <div className="seguir">Seguir</div>
         </div>
     )
 }

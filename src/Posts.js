@@ -43,10 +43,13 @@ export default function Posts() {
     ]
 
     return (
-        <div class="posts">
+        <div className="posts">
 
-            {post.map((post) => (
+            {post.map((post,i) => (
                 <Post
+
+                    key={i}
+
                     usuario_foto={post.usuario_foto}
                     usuario_nome={post.usuario_nome}
 
@@ -69,7 +72,7 @@ export default function Posts() {
 function Post(props) {
     const { usuario_foto, usuario_nome, post_foto, post_nome,curtidas_foto,curtidas_nome,numeroDeCurtidas } = props
     return (
-        <div class="post">
+        <div className="post">
             <Topo usuario_foto={usuario_foto} usuario_nome={usuario_nome} />
 
             <Conteudo numeroDeCurtidas={numeroDeCurtidas} post_foto={post_foto} post_nome={post_nome} curtidas_foto={curtidas_foto} curtidas_nome={curtidas_nome} />
@@ -81,12 +84,12 @@ function Post(props) {
 function Topo(props) {
     const { usuario_foto, usuario_nome } = props
     return (
-        <div class="topo">
-            <div class="usuario">
+        <div className="topo">
+            <div className="usuario">
                 <img src={usuario_foto} alt={usuario_nome} />
                 meowed
             </div>
-            <div class="acoes">
+            <div className="acoes">
                 <ion-icon name="ellipsis-horizontal"></ion-icon>
             </div>
         </div>
@@ -134,12 +137,12 @@ function Conteudo(props) {
         }
     return (
         <>
-            <div class="conteudo">
+            <div className="conteudo">
                 <img src={post_foto} alt={post_nome} onClick={curtir}/>
             </div>
 
-            <div class="fundo">
-                <div class="acoes">
+            <div className="fundo">
+                <div className="acoes">
                     <div>
                         <ion-icon style={{color: cor}} name={like} onClick={curtirviaBotao}></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
@@ -150,9 +153,9 @@ function Conteudo(props) {
                     </div>
                 </div>
 
-                <div class="curtidas">
+                <div className="curtidas">
                     <img src={curtidas_foto} alt={curtidas_nome} />
-                    <div class="texto">
+                    <div className="texto">
                         Curtido por <strong>{curtidas_nome}</strong> e <strong>outras {curtidas} pessoas</strong>
                     </div>
                 </div>

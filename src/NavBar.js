@@ -2,10 +2,10 @@ export default function NavBar() {
 
     const icones = ["paper-plane-outline", "compass-outline", "heart-outline", "person-outline"]
     return (
-        <div class="container">
+        <div className="container">
             <div className="logo">
                 <Icons name="logo-instagram" />
-                <div class="separador"></div>
+                <div className="separador"></div>
                 <img src="assets/img/logo.png" alt="logo" />
             </div>
 
